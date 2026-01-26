@@ -33,19 +33,19 @@ def generate_difference_between_dates(date1, date2, unit):
     pass
 
 
-def vector_addition(vec1, vec2):
-    if len(vec1) != len(vec2):
-        return None
+def vector_addition(vec1, vec2):                                                    
+    if len(vec1) != len(vec2):                                                      # Validates that both vectors have the same length
+        return None                                                                 
     
-    result = []
+    result = []                                                                     # Stores the resulting vector after element-wise addition
     
-    for a, b in zip (vec1, vec2):
-        if not isinstance (a, (int, float)) or not isinstance(b, (int, float)):
-            return None
+    for a, b in zip (vec1, vec2):                                                   # Iterates over both vectors simultaneously
+        if not isinstance (a, (int, float)) or not isinstance(b, (int, float)):     # Ensures both elements are numeric values
+            return None                                                             
         
-        result.append(a+b)
+        result.append(a+b)                                                          # Adds corresponding elements and appends the result
         
-    return result
+    return result                                                                   # Returns the resulting vector
 
 
 def vector_multiplication(vec, scalar):
