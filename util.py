@@ -22,21 +22,32 @@ def is_fizzbuzz(number):                    # Classic exercise: if it is divisib
     if not isinstance (number, int):
         return None 
                                             # SPECIAL CASE
-    if number == 0:                            # The test requires the result to be 0
+    if number == 0:                         # The test requires the result to be 0
       return 0                              # Returns the same value as the response
     
-    if number % 3 == 0 and number % 5 == 0:       # If both conditions are met, then return "FizzBuzz"
+    if number % 3 == 0 and number % 5 == 0: # If both conditions are met, then return "FizzBuzz"
         return "FizzBuzz"
-    elif number % 3 == 0:                      # If it is divisible by 3 and the remainder is 0
+    elif number % 3 == 0:                   # If it is divisible by 3 and the remainder is 0
         return "Fizz"                       # then return "Fizz" 
-    elif number % 5 == 0:                      # Same condition but with 5
+    elif number % 5 == 0:                   # Same condition but with 5
         return "Buzz"                       # Return "Buzz"
     
-    return number                              # It is not the special case 0, not divisible by 3 or 5, so return the same value
+    return number                           # It is not the special case 0, not divisible by 3 or 5, so return the same value
 
 
-def is_prime(number):
-    pass
+
+def is_prime(number):                       # Defines the function and receives the parameter
+    if not isinstance(number, int):         # Checks if the parameter is an integer
+        return None                         # If it is not, then return None
+    
+    if number <= 1:                         # If the parameter is less than or equal to one
+        return False                        # Then return False
+    
+    for i in range (2,number):              # Divides the parameter by all numbers from 2 up to one before the parameter, in order
+        if number % i == 0:                 # If the remainder is zero, then it is divisible by that number, therefore it is not prime
+            return False                    # Since it is not prime, return False
+        
+    return True                             # If the above condition is never met, then it is prime. Therefore, return True
 
 
 def is_leap_year(year):                     # Defines the function. Year is the value to be evaluated
