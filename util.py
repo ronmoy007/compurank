@@ -90,7 +90,25 @@ def vector_addition(vec1, vec2):
 
 
 def vector_multiplication(vec, scalar):
-    pass
+    
+    # Multiplies each numeric element of a vector by a scalar.
+    # Vec is a list of numeric values (int or float)
+    # Scalar is a numeric value used to multiply each element
+    # Return a new list with multiplied values, or None if an invalid element if found
+    
+    if not isinstance(scalar, (int, float)):    
+        return None
+    
+    result = []                                 # List to store the resulting vector
+    
+    for i in vec:                               # Iterate through each element  in the vector
+        if not isinstance (i, (int, float)):    # If the element is not numeric, return None
+            return None
+        
+        # Multiply the element by the scalar and append it to the result list
+        result.append (i * scalar)
+        
+    return result
 
 
 def matrix_addition(mat1, mat2):
