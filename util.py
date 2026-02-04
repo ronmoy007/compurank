@@ -145,4 +145,50 @@ def matrix_addition(mat1, mat2):
         
 
 def matrix_multiplication(mat1, mat2):
-    pass
+    # Validate that inputs are non-empty lists
+    if not isinstance(mat1, list) or not isinstance(mat2, list):
+        return None
+    if not mat1 or not mat2:
+        return None
+
+    # Get matrix dimensions
+    rows_mat1 = len(mat1)
+    cols_mat1 = len(mat1[0])
+    rows_mat2 = len(mat2)
+    cols_mat2 = len(mat2[0])
+
+    # Validate matrix compatibility for multiplication
+    if cols_mat1 != rows_mat2:
+        return None
+
+    # Validate that all rows have consistent lengths
+    for row in mat1:
+        if len(row) != cols_mat1:
+            return None
+    for row in mat2:
+        if len(row) != cols_mat2:
+            return None
+
+    # Validate that all elements are numeric
+    for row in mat1:
+        for value in row:
+            if not isinstance(value, (int, float)):
+                return None
+
+    for row in mat2:
+        for value in row:
+            if not isinstance(value, (int, float)):
+                return None
+
+    # Initialize result matrix with zeros
+    result = []
+    for i in range(rows_mat1):
+        result.append([0] * cols_mat2)
+
+    # Perform matrix multiplication
+    for i in range(rows_mat1):
+        for j in range(cols_mat2):
+            for k in range(cols_mat1):
+                result[i][j] += mat1[i][k] * mat2[k][j]
+
+    return result
