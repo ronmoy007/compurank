@@ -66,9 +66,41 @@ def is_leap_year(year):                     # Defines the function. Year is the 
     return False                            # In any other case, it is not
 
 
-def do_calculator(expression):
-    pass
+def do_calculator(expression):                      # Ensure the input is a string
+    if not isinstance(expression, str):         
+        return None
 
+    operator = None                                 # Placeholder to store the detected operator
+    for op in ["+", "-", "*", "/"]:             
+        if op in expression:
+            operator = op
+            break                                   # Stop once the first operator is found
+
+    if not operator:                                # If no operator is found, the expression is invalid
+        return None
+
+    parts = expression.split(operator)              # Split the expression into two operands using the operator
+    
+    p1 = parts[0]                                   # First operand
+    p2 = parts[1]                                   # Second operand
+
+    if not p1.isdigit() or not p2.isdigit():        # Validate that both operands contain only digits
+        return None                                 # isdigit() returns True only for numeric strings
+    
+    a = int(p1)                                     # Convert strings to integers for calculation
+    b = int(p2)
+
+    if operator == "+":                             # Perform the corresponding operation                       
+        return a + b
+    elif operator == "-":
+        return a - b
+    elif operator == "*":
+        return a * b
+    elif operator == "/":
+        return a / b
+    else:
+        return None                                 # Fallback for any unexpected case
+    
 
 def generate_difference_between_dates(date1, date2, unit):
     pass
