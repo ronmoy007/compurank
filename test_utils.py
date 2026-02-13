@@ -59,8 +59,8 @@ def test_do_calculator():
 def test_generate_difference_between_dates():
     # Happy path
     assert generate_difference_between_dates("1986-09-06", "2026-01-01", "years") == 39
-    assert generate_difference_between_dates("1986-09-06", "2026-01-01", "months") == 462
-    assert generate_difference_between_dates("1986-09-06", "2026-01-01", "days") == 14384
+    assert generate_difference_between_dates("1986-09-06", "2026-01-01", "months") == 471
+    assert generate_difference_between_dates("1986-09-06", "2026-01-01", "days") == 14362
     # Edge cases
     assert generate_difference_between_dates("1986-09-06", "1986-09-06", "years") == 0
     assert generate_difference_between_dates("1986-09-06", "1986-09-06", "months") == 0
