@@ -123,3 +123,42 @@ def test_matrix_multiplication():
     assert matrix_multiplication([[1, 2]], 
                                         [[3, 4], 
                                          [5, 'six']]) == None
+
+def test_oop_programing():
+    from util import Person
+
+    person1 = Person("Alice", "1986-09-06")
+    person2 = Person("Bob", "1996-09-06")
+
+    # Test attributes and methods
+    assert isinstance(person1, Person)
+
+    # assert only name is attribute
+    for person in [person1, person2]:
+        assert hasattr(person, "name")
+        assert not hasattr(person, "age")
+
+    assert person1.name == "Alice"
+    assert person2.name == "Bob"
+
+    assert person1.calculate_age_by_date("2026-01-01") == 39
+    assert person2.calculate_age_by_date("2026-01-01") == 29
+
+    assert person1.greet(person2) == "Hello Bob, I am Alice."    
+    assert person1.greet("Not a person") == None
+    
+    from util import Employee
+
+    employee1 = Employee("Charlie", "Software Engineer")
+    employee2 = Employee("Dave", "Data Scientist")
+
+    # Test attributes and methods
+    assert isinstance(employee1, Employee)
+    assert isinstance(employee2, Employee)
+    assert employee1.name == "Charlie"
+    assert employee2.name == "Dave"
+    assert employee1.info() == "Charlie is working as a Software Engineer."
+    assert employee2.info() == "Dave is working as a Data Scientist."
+
+
+    
