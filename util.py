@@ -240,15 +240,51 @@ def matrix_multiplication(mat1, mat2):                              # Validate t
     return result
 
 class Person:
+    """
+    Represents a person with a name and a birthdate.
+    Provides behavior to calculate age and greet another person.
+    """
     def __init__(self, name, birthdate):
-        self.name = name
-        self.birthdate = birthdate
+        self.name = name                                                            # Store the person's name as an instance attribute
+        self.birthdate = birthdate                                                  # Store the person's birthdate as an instance attribute
         
     def calculate_age_by_date(self, reference_date):
-        pass
+        """
+        Calculates the person's age based on a given reference date.
+        """
+        birth_year, birth_month, birth_day = map(int, self.birthdate.split("-"))      # Split the birthdate string into year, month, and day
+        ref_year, ref_month, ref_day = map(int, reference_date.split("-"))            # Split the reference date string into year, month, and day
+
+        age = ref_year - birth_year                                                   # Initial age calculation based on year difference
+        
+        if (ref_month, ref_day) < (birth_month, birth_day):                           # Adjust age if the birthday has not occurred yet in the reference year
+            age -= 1
+            
+        return age                                                                    # Return the final calculated age
 
     def greet(self, other_person):
-        pass
+        """
+        Greets another person if the argument is a Person instance.
+
+        :param other_person: Expected to be an instance of Person.
+        :return: Greeting string if valid Person, otherwise None.
+        """
+        if not isinstance (other_person, Person):                                    # Validate that the argument is a Person instance
+            return None
+        
+        return f"Hello {other_person.name}, I am {self.name}."                       # Return a formatted greeting message
     
 class Employee():
-    pass
+    """
+    Represents an employee with a name and a job role.
+    Provides behavior to describe employment information.
+    """
+    def __init__(self, name, role):
+       
+        self.name = name                                                            # Store the employee's name
+        self.role = role                                                            # Store the employee's job role
+        
+    def info(self):
+        return f"{self.name} is working as a {self.role}."    
+
+    
